@@ -1,0 +1,24 @@
+{
+    "appName": "Example Service",
+    "authen": {
+        "authBrandUri": "https://gateway.dizim.ai/{__tenant__=}/{__domain__=}/api/v1/accounts/verify-token",
+        "authPlatformUri": "api/v1/accounts/verify-token"
+    },
+    "connection": {
+        "type": "mongodb",
+        "database": "dizim_db",
+        "host": "localhost",
+        "port": 27017,
+        "username": "root",
+        "password": "Abcd1234",
+        "authSource": "admin",
+        "replicaSet": null,
+        "ssl": false
+    },
+    "redis": {
+        "host": "localhost",
+        "port": 6379,
+        "password": "",
+        "db": 2
+    }
+}

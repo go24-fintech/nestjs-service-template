@@ -1,0 +1,13 @@
+{
+    "connection": {
+        "type": "mongodb",
+        "database": "dizim_db",
+        "host": "localhost",
+        "port": 27017,
+        "username": "",
+        "password": "",
+        "authSource": "admin",
+        "replicaSet": null,
+        "ssl": false
+    }
+}
