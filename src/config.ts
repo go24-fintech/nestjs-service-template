@@ -1,11 +1,11 @@
 import { CoreConfigModel, load as coreLoad } from 'be-core';
-import { MailOption } from 'be-core/dist/src/modules/mail/type';
 import { merge } from 'lodash';
-import * as config from './config/config.json'
+import * as config from './config/config.json';
 
 export class AuthenConfig {
-    authBrandUri: string
-    authPlatformUri: string
+    host: string
+    endpointCheckLogin: string
+    endpointRolePermission: string
 }
 
 export class ConnectionConfig {
@@ -15,15 +15,22 @@ export class ConnectionConfig {
     port: number;
     username: string;
     password: string;
+}
+
+export class MongoDbConnectionConfig extends ConnectionConfig {
     authSource: string;
     replicaSet: string;
     ssl: boolean
     retryWrites: boolean
 }
 
+export class MysqlConnection extends ConnectionConfig {
+}
+
 export class ConfigModel extends CoreConfigModel {
     // add more config properties here
-    connection: ConnectionConfig
+    mongoDbConnection: MongoDbConnectionConfig
+    mysqlConnection: MysqlConnection
     authen: AuthenConfig
 }
 

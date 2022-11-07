@@ -1,13 +1,15 @@
+import { ExeptionFilterModule } from '@core/modules';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { HealthModule, InitialModule, CacheModule } from 'be-core';
-import { ConnectionConfig, load } from './config';
+import { CacheModule, HealthModule, InitialModule } from 'be-core';
+import { load, MongoDbConnectionConfig } from './config';
 import { modules } from './modules';
 
 @Module({
   imports: [
     InitialModule,
+    ExeptionFilterModule,
     HealthModule,
     CacheModule,
     ConfigModule.forRoot({
@@ -17,15 +19,15 @@ import { modules } from './modules';
 
     TypeOrmModule.forRootAsync({
       useFactory: (configService: ConfigService) => {
-        const connectionConfig = configService.get<ConnectionConfig>('connection');
+        const connection = configService.get<MongoDbConnectionConfig>('mongoDbConnection');
 
         const connectionOptions = {
           "mongodb": () => {
             return {
-              ...connectionConfig
+              ...connection
             }
           }
-        }[connectionConfig?.type ?? 'mongodb']()
+        }[connection?.type ?? 'mongodb']()
 
         return {
           ...connectionOptions,
@@ -44,6 +46,8 @@ import { modules } from './modules';
     ...modules
   ],
   controllers: [],
-  providers: [],
+  providers: [
+  ],
 })
-export class AppModule {}
+export class AppModule {
+}

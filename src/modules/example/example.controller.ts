@@ -1,14 +1,13 @@
 import { ResponseInterceptor } from "@core/interceptor/response.interceptor";
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query, UseGuards, UseInterceptors } from "@nestjs/common";
-import { BaseController, Mediator, Paginated } from "be-core";
-import { AuthAuthorize } from "~/guard";
+import { BaseController, Mediator } from "be-core";
+import { Authorize, Roles } from "~/guard";
 import { AddCommand, UpdateCommand } from "./command";
 import { DeleteCommand } from "./command/delete.command";
-import { Example } from "./entities/example";
 import { ExampleQueries } from "./queries/example.queries";
 
 @Controller('api/example')
-@UseGuards(AuthAuthorize)
+@UseGuards(Authorize('Example', Roles.Shop))
 @UseInterceptors(ResponseInterceptor)
 export class ExampleController extends BaseController {
     constructor(

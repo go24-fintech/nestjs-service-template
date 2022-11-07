@@ -1,5 +1,5 @@
 {
-    "connection": {
+    "mongoDbConnection": {
         "type": "mongodb",
         "database": "dizim_db",
         "host": "localhost",
@@ -9,5 +9,19 @@
         "authSource": "admin",
         "replicaSet": null,
         "ssl": false
+    },
+    "mysqlConnection": {
+        "type": "mysql",
+        "host": "localhost",
+        "port": 3306,
+        "username": "root",
+        "password": "",
+        "database": "go24"
+    },
+    "redis": {
+        "host": "171.244.188.223",
+        "port": 6379,
+        "password": "abcd1234",
+        "db": 1
     }
 }

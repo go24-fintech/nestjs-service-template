@@ -1,10 +1,11 @@
 {
     "appName": "Example Service",
     "authen": {
-        "authBrandUri": "https://gateway.dizim.ai/{__tenant__=}/{__domain__=}/api/v1/accounts/verify-token",
-        "authPlatformUri": "api/v1/accounts/verify-token"
+        "host": "http://localhost:5000",
+        "endpointCheckLogin": "/users/api/authen/checklogin",
+        "endpointRolePermission": "/internal/users/api/role-permissions"
     },
-    "connection": {
+    "mongoDbConnection": {
         "type": "mongodb",
         "database": "dizim_db",
         "host": "localhost",
@@ -16,9 +17,9 @@
         "ssl": false
     },
     "redis": {
-        "host": "localhost",
+        "host": "171.244.188.223",
         "port": 6379,
-        "password": "",
-        "db": 2
+        "password": "abcd1234",
+        "db": 1
     }
 }

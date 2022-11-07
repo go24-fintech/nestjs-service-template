@@ -1,3 +1,4 @@
+import { CacheModule } from '@core/modules';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CQRSModule, HttpModule } from 'be-core';
@@ -26,6 +27,7 @@ const commandHandlers = [
     imports: [
         TypeOrmModule.forFeature(entities),
         CQRSModule,
+        CacheModule,
         HttpModule.register({
             config: {
                 headers: {

@@ -1,0 +1,1 @@
+export const RoleFeature = 'Permission.Role.Feature'

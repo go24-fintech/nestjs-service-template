@@ -7,11 +7,12 @@ enum UserHttpCode {
 export interface CoreRes<T = any> {
     code?: string;
     data: T;
+    errors?: any
     errorMessage: string;
     result: UserHttpCode
 }
 
-export class SuccessResponse<T = any> implements Omit<CoreRes<T>, 'code' | 'errorMessage'> {
+export class SuccessResponse<T = any> implements Omit<CoreRes<T>, 'code' | 'errorMessage' | 'errors'> {
     data: T;
     result: UserHttpCode
     constructor(data: T) {
@@ -20,7 +21,7 @@ export class SuccessResponse<T = any> implements Omit<CoreRes<T>, 'code' | 'erro
     }
 }
 
-export class WarningResponse<T = any> implements Omit<CoreRes<T>, 'data'> {
+export class WarningResponse<T = any> implements Omit<CoreRes<T>, 'data' | 'errors'> {
     code?: string;
     errorMessage: string;
     result: UserHttpCode
@@ -34,11 +35,13 @@ export class WarningResponse<T = any> implements Omit<CoreRes<T>, 'data'> {
 
 export class ErrorResponse<T = any> implements Omit<CoreRes<T>, 'data'> {
     code?: string;
+    errors?: any
     errorMessage: string;
     result: UserHttpCode
 
-    constructor(message: string, code?: string) {
-        this.code = code
+    constructor(message: string, errors?: any) {
+        this.code = 'error'
+        this.errors = errors
         this.errorMessage = message
         this.result = UserHttpCode.Error
     }
