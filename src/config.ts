@@ -7,7 +7,11 @@ export class AuthenConfig {
     endpointCheckLogin: string
     endpointRolePermission: string
 }
-
+export class KafkaConfig {
+    enable: boolean
+    brokers: string []
+    consumerGroupId: string
+}
 export class ConnectionConfig {
     type: 'mongodb' | 'mysql' | 'mssql';
     database: string;
@@ -32,6 +36,7 @@ export class ConfigModel extends CoreConfigModel {
     mongoDbConnection: MongoDbConnectionConfig
     mysqlConnection: MysqlConnection
     authen: AuthenConfig
+    kafka: KafkaConfig
 }
 
 const defaultConfig = () => {

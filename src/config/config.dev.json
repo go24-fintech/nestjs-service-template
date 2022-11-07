@@ -1,27 +1,32 @@
 {
+    "appName": "Example Service",
+    "authen": {
+        "host": "http://localhost:5000",
+        "endpointCheckLogin": "/users/api/authen/checklogin",
+        "endpointRolePermission": "/internal/users/api/role-permissions"
+    },
     "mongoDbConnection": {
         "type": "mongodb",
         "database": "dizim_db",
         "host": "localhost",
         "port": 27017,
-        "username": "",
-        "password": "",
+        "username": "root",
+        "password": "Abcd1234",
         "authSource": "admin",
         "replicaSet": null,
         "ssl": false
-    },
-    "mysqlConnection": {
-        "type": "mysql",
-        "host": "localhost",
-        "port": 3306,
-        "username": "root",
-        "password": "",
-        "database": "go24"
     },
     "redis": {
         "host": "171.244.188.223",
         "port": 6379,
         "password": "abcd1234",
         "db": 1
+    },
+    "kafka": {
+        "enable": true,
+        "brokers": [
+            "localhost:29092"
+        ],
+        "consumerGroupId": "kafka-group-example"
     }
 }

@@ -21,5 +21,12 @@
         "port": 6379,
         "password": "abcd1234",
         "db": 1
+    },
+    "kafka": {
+        "enable": true,
+        "brokers": [
+            "localhost:29092"
+        ],
+        "consumerGroupId": "kafka-group-example"
     }
 }
